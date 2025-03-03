@@ -11,8 +11,6 @@
 |
 */
 
-
-
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +35,7 @@ Route::get('/unlink-storage', function () {
 
     if (File::exists($storagePath)) {
         File::delete($storagePath);
+
         return response()->json(['message' => 'Old storage link removed successfully!']);
     }
 
@@ -48,6 +47,7 @@ Route::get('/unlink-storage', function () {
  */
 Route::get('/link-storage', function () {
     Artisan::call('storage:link');
+
     return response()->json(['message' => 'Storage linked successfully!']);
 });
 
